@@ -1,13 +1,5 @@
-"""
-Here’s the exam:
-1. Select a Causal language Model
-2. ⁠You can freely train/fine-tune/or use it outside the box into what use-case you prefer 
-3. ⁠Deploy that to heroku, render, or any free deployment platforms (free only) using Fast API. 
-4. ⁠Must be able to do post requests remotely.
-5. Upload it to github with a short readme on how to install and infer on your endpoint
-"""
 from fastapi import FastAPI
-from transformers import AutoModelForCausalLM, AutoConfig, AutoTokenizer, BitsAndBytesConfig
+from transformers import AutoModelForCausalLM, AutoTokenizer
 from pydantic import BaseModel
 import torch
 
