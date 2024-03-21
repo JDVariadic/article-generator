@@ -6,10 +6,13 @@ import torch
 #Credits to https://www.kaggle.com/datasets/fabiochiusano/medium-articles for the dataset
 
 app = FastAPI()
-
-async def generate_text(title, max_length=400, top_k=50, model_dir="./model/custom-gpt2-model", tokenizer_dir="./model/custom-gpt2-tokenizer"):
-    if max_length > 400:
+TOKEN_LIMIT = 400
+TOP_K_LIMIT = 50
+async def generate_text(title, max_length=TOKEN_LIMIT, top_k=TOP_K_LIMIT, model_dir="./model/custom-gpt2-model", tokenizer_dir="./model/custom-gpt2-tokenizer"):
+    if max_length > TOKEN_LIMIT:
         return {"error": "Limit for max_length is 400 tokens."}
+    if top_k > TOP_K_LIMIT:
+        return {"error": "Limit for top_k is 50."}
     model = AutoModelForCausalLM.from_pretrained(model_dir)
     tokenizer = AutoTokenizer.from_pretrained(tokenizer_dir)
     input_text = f"[TITLE] {title} [/TITLE]"
@@ -27,8 +30,8 @@ async def generate_text(title, max_length=400, top_k=50, model_dir="./model/cust
 
 class RequestParams(BaseModel):
     title: str
-    max_length: int = 400
-    top_k: int = 50
+    max_length: int = TOKEN_LIMIT
+    top_k: int = TOP_K_LIMIT
 
 @app.post("/generate-article")
 async def handle_request(request: RequestParams):
