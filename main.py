@@ -19,7 +19,6 @@ async def generate_text(title, max_length=1000, top_k=50, model_dir="./model/cus
             max_length=max_length,
             do_sample=True,
             top_k=top_k,
-            early_stopping=True,
         )
     generated_text = tokenizer.decode(output_sequences[0], skip_special_tokens=True) 
     return generated_text
