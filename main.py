@@ -10,7 +10,6 @@ app = FastAPI()
 async def generate_text(title, max_length=1000, top_k=50, model_dir="./model/custom-gpt2-model", tokenizer_dir="./model/custom-gpt2-tokenizer"):
     model = AutoModelForCausalLM.from_pretrained(model_dir)
     tokenizer = AutoTokenizer.from_pretrained(tokenizer_dir)
-    tokenizer.pad_token = tokenizer.eos_token
     input_text = f"[TITLE] {title} [/TITLE]"
     input_ids = tokenizer(input_text, return_tensors="pt").input_ids
     with torch.no_grad():
