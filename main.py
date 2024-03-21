@@ -7,7 +7,7 @@ import torch
 
 app = FastAPI()
 
-async def generate_text(title, max_length=250, top_k=50, model_dir="./model/custom-gpt2-model", tokenizer_dir="./model/custom-gpt2-tokenizer"):
+async def generate_text(title, max_length=1000, top_k=50, model_dir="./model/custom-gpt2-model", tokenizer_dir="./model/custom-gpt2-tokenizer"):
     model = AutoModelForCausalLM.from_pretrained(model_dir)
     tokenizer = AutoTokenizer.from_pretrained(tokenizer_dir)
     input_text = f"[TITLE] {title} [/TITLE]"
@@ -26,7 +26,7 @@ async def generate_text(title, max_length=250, top_k=50, model_dir="./model/cust
 
 class RequestParams(BaseModel):
     title: str
-    max_length: int = 250
+    max_length: int = 1000
     top_k: int = 50
 
 @app.post("/generate-article")
