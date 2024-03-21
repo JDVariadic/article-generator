@@ -43,4 +43,12 @@ Build the endpoint by selecting Create Space.
 
 # Model Fine-Tuning guide:
 
+## Adding special [TITLE] and [/TITLE] tokens:
+
+custom-gpt2-tokenizer is a modified version of the original gpt-2 tokenizer but with added title tags to add separation between the training data.
+
+## Training Proper
+
 Feel free to reference preprocessing.ipynb
+
+the medium_articles.csv file is concatenated into a text-file. Fine-tuning was done using the Trainer class from the transformers library.
