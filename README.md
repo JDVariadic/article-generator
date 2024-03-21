@@ -29,6 +29,16 @@ curl -X 'POST' \
 }'
 ```
 
+Or with Python:
+```
+import requests
+
+url = 'https://jdvariadic-gpt2-article-generator.hf.space/generate-article'
+myobj = {'title': 'Why I started reading books this year.', "max_length": 350}
+
+x = requests.post(url, json = myobj)
+```
+
 # Setup Guide:
 
 Go to https://huggingface.co/spaces
