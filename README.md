@@ -1,11 +1,3 @@
----
-title: Gpt2 Article Generator
-emoji: 🔥
-colorFrom: red
-colorTo: purple
-sdk: docker
-pinned: false
-license: mit
----
+Credits to https://www.kaggle.com/datasets/fabiochiusano/medium-articles for the dataset
 
-Check out the configuration reference at https://huggingface.co/docs/hub/spaces-config-reference
+Setup Guide:
